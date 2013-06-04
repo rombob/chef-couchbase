@@ -36,3 +36,8 @@ default['couchbase']['server']['username'] = "Administrator"
 default['couchbase']['server']['password'] = ""
 
 default['couchbase']['server']['memory_quota_mb'] = Couchbase::MaxMemoryQuotaCalculator.from_node(node).in_megabytes
+
+default['cacheserver']['server']['prerequisites'] = []
+if node['platform'] == 'ubuntu'
+  default['cacheserver']['server']['prerequisites'].push 'libssl0.9.8'
+end

@@ -24,6 +24,14 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+if !node['cacheserver']['server']['prerequisites'].empty?
+  node['cacheserver']['server']['prerequisites'].each do |package_to_install|
+    package package_to_install do
+      action :install
+    end
+  end
+end
+
 remote_file File.join(Chef::Config[:file_cache_path], node['couchbase']['server']['package_file']) do
   source node['couchbase']['server']['package_full_url']
   action :create_if_missing
