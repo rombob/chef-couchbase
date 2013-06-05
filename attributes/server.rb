@@ -1,7 +1,7 @@
 package_machine = node['kernel']['machine'] == "x86_64" ? "x86_64" : "x86"
 
 default['couchbase']['server']['edition'] = "community"
-default['couchbase']['server']['version'] = "2.0.0"
+default['couchbase']['server']['version'] = "2.0.1"
 
 case node['platform_family']
 when "debian"
@@ -37,7 +37,7 @@ default['couchbase']['server']['password'] = ""
 
 default['couchbase']['server']['memory_quota_mb'] = Couchbase::MaxMemoryQuotaCalculator.from_node(node).in_megabytes
 
-default['cacheserver']['server']['prerequisites'] = []
+default['couchbase']['server']['prerequisites'] = []
 if node['platform'] == 'ubuntu'
-  default['cacheserver']['server']['prerequisites'].push 'libssl0.9.8'
+  default['couchbase']['server']['prerequisites'].push 'libssl0.9.8'
 end

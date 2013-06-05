@@ -24,8 +24,8 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-if !node['cacheserver']['server']['prerequisites'].empty?
-  node['cacheserver']['server']['prerequisites'].each do |package_to_install|
+if !node['couchbase']['server']['prerequisites'].empty?
+  node['couchbase']['server']['prerequisites'].each do |package_to_install|
     package package_to_install do
       action :install
     end
